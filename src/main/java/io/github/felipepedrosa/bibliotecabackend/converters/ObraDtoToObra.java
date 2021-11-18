@@ -7,7 +7,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import javax.validation.Valid;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,7 +19,7 @@ public class ObraDtoToObra implements Converter<ObraDto, Obra> {
     }
 
     @Override
-    public Obra convert(@Valid @Nullable ObraDto source) {
+    public Obra convert(@Nullable ObraDto source) {
         if (source == null) return null;
 
         Obra obra = new Obra();
