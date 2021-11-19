@@ -1,0 +1,16 @@
+spring:
+
+  datasource:
+    url: "jdbc:h2:mem:testdb"
+    username: "sa"
+    password: ""
+
+  jpa:
+    database-platform: "org.hibernate.dialect.H2Dialect"
+    show-sql: true
+    open-in-view: true
+
+  h2:
+    console:
+      enabled: true
+      path: "/console"
