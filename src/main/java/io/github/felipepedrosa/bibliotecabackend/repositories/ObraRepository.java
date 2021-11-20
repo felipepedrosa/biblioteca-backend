@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface ObraRepository extends PagingAndSortingRepository<Obra, UUID> {
+    boolean existsByTituloIgnoreCase(String titulo);
 }

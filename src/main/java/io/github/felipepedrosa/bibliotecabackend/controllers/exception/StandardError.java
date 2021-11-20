@@ -14,6 +14,14 @@ public class StandardError implements Serializable {
     public StandardError() {
     }
 
+    public StandardError(Integer httpStatus, String path, String description, List<String> messages) {
+        this.timestamp = Instant.now();
+        this.httpStatus = httpStatus;
+        this.path = path;
+        this.description = description;
+        this.messages = messages;
+    }
+
     public Instant getTimestamp() {
         return timestamp;
     }
