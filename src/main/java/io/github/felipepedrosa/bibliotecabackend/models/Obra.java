@@ -20,7 +20,7 @@ public class Obra implements Serializable {
     @Column(length = 30, nullable = false, unique = true)
     private String titulo;
 
-    @Column(length = 30, nullable = false, unique = true)
+    @Column(length = 30, nullable = false)
     private String editora;
 
     @Column(unique = true)
