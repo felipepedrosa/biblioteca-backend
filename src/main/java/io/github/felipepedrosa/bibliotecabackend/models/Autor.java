@@ -1,5 +1,6 @@
 package io.github.felipepedrosa.bibliotecabackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Autor implements Serializable {
     @Column(length = 30, nullable = false, unique = true)
     private String nome;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "autores")
     private final Set<Obra> obras = new HashSet<>();
 
