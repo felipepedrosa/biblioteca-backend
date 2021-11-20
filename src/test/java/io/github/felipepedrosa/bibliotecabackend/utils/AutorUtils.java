@@ -11,16 +11,17 @@ public class AutorUtils {
     private AutorUtils() {
     }
 
-    public static Autor createAutor() {
-        return CollectionUtils.firstElement(createAutors(1));
+    public static Autor createAutor(boolean withId) {
+        return CollectionUtils.firstElement(createAutors(1, withId));
     }
 
-    public static Set<Autor> createAutors(int quantity) {
+
+    public static Set<Autor> createAutors(int quantity, boolean withId) {
         Set<Autor> autores = new HashSet<>(quantity);
 
         for (int i = 0; i < quantity; i++) {
             Autor autor = new Autor();
-            autor.setId(UUID.randomUUID());
+            autor.setId(withId ? UUID.randomUUID() : null);
             autor.setNome("Autor " + i);
 
             autores.add(autor);

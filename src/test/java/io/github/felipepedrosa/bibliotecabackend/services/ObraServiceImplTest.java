@@ -36,15 +36,15 @@ class ObraServiceImplTest {
     @Test
     @DisplayName("Should create a new Obra using mocks")
     public void createWithoutErrors() {
-        Obra expected = ObraUtils.createObraWithoutAutor();
-        expected.addAutores(AutorUtils.createAutors(2));
+        Obra expected = ObraUtils.createObraWithoutAutor(true);
+        expected.addAutores(AutorUtils.createAutors(2, true));
 
         given(obraDtoToObra.convert(Mockito.any())).willReturn(expected);
         given(obraRepository.save(Mockito.any())).willReturn(expected);
 
 
-        ObraDto obraDto = ObraDtoUtils.createObraWithoutAutor();
-        obraDto.setAutores(AutorDtoUtils.createAutors(2));
+        ObraDto obraDto = ObraDtoUtils.createObraWithoutAutor(true);
+        obraDto.setAutores(AutorDtoUtils.createAutors(2, true));
         Obra returned = obraService.create(obraDto);
 
         assertEquals(expected.getId(), returned.getId());

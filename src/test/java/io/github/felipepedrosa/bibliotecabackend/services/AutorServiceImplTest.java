@@ -37,11 +37,11 @@ class AutorServiceImplTest {
     @Test
     @DisplayName("Should create a new Autor")
     void testCreateSingle() {
-        Autor autor = AutorUtils.createAutor();
+        Autor autor = AutorUtils.createAutor(true);
         given(autorDtoToAutor.convert(any())).willReturn(autor);
         given(autorRepository.save(any())).willReturn(autor);
 
-        AutorDto autorDto = AutorDtoUtils.createAutor();
+        AutorDto autorDto = AutorDtoUtils.createAutor(true);
         Autor result = autorService.create(autorDto);
 
         assertNotNull(result);
@@ -53,7 +53,7 @@ class AutorServiceImplTest {
     @Test
     @DisplayName("Should create multiple Autor")
     void testCreateMultiple() {
-        Set<Autor> expected = AutorUtils.createAutors(2);
+        Set<Autor> expected = AutorUtils.createAutors(2, true);
         Autor autor1 = CollectionUtils.firstElement(expected);
         Autor autor2 = CollectionUtils.lastElement(expected);
 
@@ -65,7 +65,7 @@ class AutorServiceImplTest {
                 .willReturn(autor1)
                 .willReturn(autor2);
 
-        Set<AutorDto> dtosAutores = AutorDtoUtils.createAutors(2);
+        Set<AutorDto> dtosAutores = AutorDtoUtils.createAutors(2, true);
         Set<Autor> actual = autorService.create(dtosAutores);
 
         assertNotNull(actual);

@@ -11,22 +11,22 @@ public class ObraDtoUtils {
     private ObraDtoUtils() {
     }
 
-    public static Set<ObraDto> createObrasWithoutAutor(int quantity) {
+    public static Set<ObraDto> createObrasWithoutAutor(int quantity, boolean withId) {
         Set<ObraDto> obras = new HashSet<>(quantity);
         for (int i = 0; i < quantity; i++) {
-            obras.add(createObraWithoutAutor(i));
+            obras.add(createObraWithoutAutor(i, withId));
         }
 
         return obras;
     }
 
-    public static ObraDto createObraWithoutAutor() {
-        return createObraWithoutAutor(null);
+    public static ObraDto createObraWithoutAutor(boolean withId) {
+        return createObraWithoutAutor(null, withId);
     }
 
-    private static ObraDto createObraWithoutAutor(Integer referenceNumber) {
+    private static ObraDto createObraWithoutAutor(Integer referenceNumber, boolean withId) {
         ObraDto obraDto = new ObraDto();
-        obraDto.setId(UUID.randomUUID());
+        obraDto.setId(withId ? UUID.randomUUID() : null);
         obraDto.setTitulo(referenceNumber == null ? "Título" : "Título " + 1);
         obraDto.setEditora(referenceNumber == null ? "Editora" : "Editora " + 1);
         obraDto.setUrlImagem("localhos:8080/imgs/teste.png");
